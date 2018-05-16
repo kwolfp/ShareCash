@@ -21,6 +21,10 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <engine.url>http://127.0.0.1:8090</engine.url>
+    </properties>
+
     <profiles>
         <profile>
             <id>web</id>
@@ -48,6 +52,11 @@
                     <groupId>org.springframework</groupId>
                     <artifactId>spring-webmvc</artifactId>
                     <version>5.0.6.RELEASE</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.github.ggeorgovassilis</groupId>
+                    <artifactId>spring-rest-invoker</artifactId>
+                    <version>1.6-SNAPSHOT</version>
                 </dependency>
                 <dependency>
                     <groupId>nz.net.ultraq.thymeleaf</groupId>

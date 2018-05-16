@@ -8,7 +8,9 @@ import org.springframework.context.annotation.ComponentScan;
  * Created by Kamil Przyborowski
  * Wojskowa Akademia Techniczna im. Jarosława Dąbrowskiego, Warszawa 2018.
  */
-@ComponentScan({"pl.edu.wat.share.cash.web.controller"})
+@ComponentScan({"pl.edu.wat.share.cash.web.controller",
+                "pl.edu.wat.share.cash.web.factory",
+                "pl.edu.wat.share.cash.web.config"})
 @SpringBootApplication
 public class WebApplication extends SpringBootServletInitializer {
 

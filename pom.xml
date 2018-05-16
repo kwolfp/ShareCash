@@ -13,6 +13,7 @@
         <module>share-cash-mobile</module>
         <module>share-cash-domain</module>
         <module>share-cash-common</module>
+        <module>spring-rest-invoker</module>
     </modules>
     <packaging>pom</packaging>
 

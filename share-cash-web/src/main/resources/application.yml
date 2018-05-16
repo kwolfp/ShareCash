@@ -12,3 +12,6 @@ server:
     cookie:
       name: JSESSIONID
       max-age: -1
+
+engine:
+  url: @engine.url@

@@ -1,7 +1,10 @@
 package pl.edu.wat.share.cash.web.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import pl.edu.wat.share.cash.common.rest.PersonRest;
 
 /**
  * Created by Kamil Przyborowski
@@ -10,5 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/person")
 public class PersonController {
+
+    @Autowired
+    PersonRest personRest;
 
 }
