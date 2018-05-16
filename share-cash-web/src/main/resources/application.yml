@@ -1,0 +1,14 @@
+spring:
+  thymeleaf:
+    cache: false
+    prefix: file:src/main/resources/templates/
+  resources:
+    static-locations: file:src/main/resources/static/
+
+server:
+  port: 8070
+  session:
+    timeout: 86400
+    cookie:
+      name: JSESSIONID
+      max-age: -1
