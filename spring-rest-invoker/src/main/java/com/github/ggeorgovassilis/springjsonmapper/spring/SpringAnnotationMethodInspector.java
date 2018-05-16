@@ -37,7 +37,15 @@ public class SpringAnnotationMethodInspector extends BaseAnnotationMethodInspect
 		if (!Utils.hasValue(rm.value()))
 			throw new MappingDeclarationException("Path missing from @RequestMapping on " + method.toGenericString(),
 					method, rm, -1);
-		urlMapping.setUrl(resolveExpression(rm.value()[0]));
+
+
+		String url = resolveExpression(rm.value()[0]);
+		RequestMapping classRm = AnnotationUtils.findAnnotation(method.getDeclaringClass(), RequestMapping.class);
+		if(classRm != null && Utils.hasValue(rm.value())) {
+			url = resolveExpression(classRm.value()[0]) + url;
+		}
+
+		urlMapping.setUrl(url);
 		urlMapping.setHeaders(rm.headers());
 		urlMapping.setConsumes(rm.consumes());
 		urlMapping.setProduces(rm.produces());
