@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import pl.edu.wat.share.cash.domain.entity.base.BaseEntity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,5 +31,11 @@ public class Person extends BaseEntity {
                     generator = "sPerson")
     @Id
     Long id;
+
+    @Column
+    String name;
+
+    @Column
+    String lastName;
 
 }

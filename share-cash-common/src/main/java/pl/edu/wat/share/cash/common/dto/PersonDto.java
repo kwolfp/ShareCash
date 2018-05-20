@@ -13,4 +13,8 @@ import pl.edu.wat.share.cash.common.dto.base.BaseDto;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 public class PersonDto extends BaseDto<Long> {
+
+    private String name;
+    private String lastName;
+
 }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{main.html}">
+<body>
+    <div layout:fragment="mainContent">
+        <h2 th:text="#{person.add_person}"></h2>
+        <form th:action="@{/person/create}" method="post">
+            <input type="text" name="name" th:placeholder="#{person.name}">
+            <input type="text" name="lastName" th:placeholder="#{person.last_name}">
+            <input type="submit" th:value="#{person.add}">
+        </form>
+
+        <h3 th:text="#{person.list}"></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th th:text="#{person.name}"></th>
+                    <th th:text="#{person.last_name}"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="person, itr : ${persons}">
+                    <td th:text="${person?.name}"></td>
+                    <td th:text="${person?.lastName}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
