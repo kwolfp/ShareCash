@@ -48,7 +48,7 @@ public class PersonProvider extends BaseCrudProvider<Person, PersonDto> {
         }
 
         entity.setName(dto.getName());
-        entity.setLastName(dto.getName());
+        entity.setLastName(dto.getLastName());
 
         return entity;
     }

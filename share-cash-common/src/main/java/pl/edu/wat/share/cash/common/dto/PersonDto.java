@@ -1,5 +1,6 @@
 package pl.edu.wat.share.cash.common.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ import pl.edu.wat.share.cash.common.dto.base.BaseDto;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
+@AllArgsConstructor
 public class PersonDto extends BaseDto<Long> {
 
     private String name;

@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import pl.edu.wat.share.cash.common.dto.PersonDto;
 import pl.edu.wat.share.cash.common.rest.PersonRest;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -33,12 +36,16 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String createPerson(Model model, @RequestBody PersonDto person) {
-        personRest.createPerson(person);
+    public String createPerson(@RequestBody PersonDto person) {
+        System.out.println(person);
 
-        List<PersonDto> persons = personRest.getAllPersons();
-        model.addAttribute("persons", persons);
-        return "persons";
+        PersonDto createdPerson = personRest.createPerson(person);
+        if(createdPerson != null) {
+            return "redirect:/person/list";
+        } else {
+            // tu można wyświetlić jakiś błąd
+            return "redirect:/person/list";
+        }
     }
 
 }

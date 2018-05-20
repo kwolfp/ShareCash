@@ -7,9 +7,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/amulet_dev
-    username: amulet_dev
-    password: amulet_dev_123
+    url: jdbc:postgresql://127.0.0.1:5432/share_cash
+    username: share_cash
+    password: share_cash_123
   jpa:
     hibernate:
       ddl-auto: update
