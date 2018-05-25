@@ -26,7 +26,6 @@ public class PersonController {
     PersonRest personRest;
 
 
-
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String getPersonsList(Model model) {
         List<PersonDto> persons = personRest.getAllPersons();
