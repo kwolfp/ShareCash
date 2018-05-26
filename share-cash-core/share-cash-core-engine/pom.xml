@@ -43,6 +43,16 @@
                 </dependency>
             </dependencies>
         </profile>
+        <profile>
+            <id>swagger</id>
+            <dependencies>
+                <dependency>
+                    <groupId>pl.edu.wat</groupId>
+                    <artifactId>share-cash-utils-swagger</artifactId>
+                    <version>${project.version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
     </profiles>
 
 </project>
