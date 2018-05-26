@@ -22,5 +22,6 @@ public class PersonDto extends BaseDto<Long> {
     private String lastName;
 
     private List<CreditCardDto> creditCards;
+    private List<GroupDto> groups;
 
 }

@@ -22,8 +22,8 @@ import java.util.List;
 @RequestMapping("/person")
 public class PersonController {
 
-    @Autowired
-    PersonRest personRest;
+        @Autowired
+        PersonRest personRest;
 
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)

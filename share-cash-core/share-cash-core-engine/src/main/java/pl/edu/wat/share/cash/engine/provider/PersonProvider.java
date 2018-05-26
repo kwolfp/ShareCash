@@ -3,11 +3,14 @@ package pl.edu.wat.share.cash.engine.provider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.edu.wat.share.cash.common.dto.CreditCardDto;
+import pl.edu.wat.share.cash.common.dto.GroupDto;
 import pl.edu.wat.share.cash.common.dto.PersonDto;
 import pl.edu.wat.share.cash.common.provider.BaseCrudProvider;
 import pl.edu.wat.share.cash.domain.entity.CreditCard;
+import pl.edu.wat.share.cash.domain.entity.Group;
 import pl.edu.wat.share.cash.domain.entity.Person;
 import pl.edu.wat.share.cash.engine.repository.CreditCardRepository;
+import pl.edu.wat.share.cash.engine.repository.GroupRepository;
 import pl.edu.wat.share.cash.engine.repository.PersonRepository;
 
 import java.util.ArrayList;
@@ -28,6 +31,8 @@ public class PersonProvider extends BaseCrudProvider<Person, PersonDto> {
     @Autowired
     CreditCardRepository creditCardRepository;
 
+    @Autowired
+    GroupRepository groupRepository;
 
     public PersonDto createPerson(PersonDto person) {
         return convert(repository.save(convert(person, null)));
@@ -45,8 +50,9 @@ public class PersonProvider extends BaseCrudProvider<Person, PersonDto> {
         repository.deleteById(personId);
     }
 
-    public List<PersonDto> getAllPersons() {
-        return convert(repository.findAll());
+    public List<PersonDto> getAllPersons() { return convert(repository.findAll());
+
+//
     }
 
 
@@ -74,7 +80,16 @@ public class PersonProvider extends BaseCrudProvider<Person, PersonDto> {
             entity.setCreditCards(creditCards);
         }
 
+        if(dto.getGroups()!=null){
+
+        List<Group> groups = dto.getGroups().stream()
+                .filter(Objects::nonNull)
+                .map(gr ->groupRepository.getOne(gr.getId()))
+                .collect(Collectors.toList());
+        entity.setGroups(groups);
+        }
+
+
         return entity;
     }
-
 }

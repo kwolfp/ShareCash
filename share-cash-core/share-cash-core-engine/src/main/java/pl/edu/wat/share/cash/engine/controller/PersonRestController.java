@@ -42,7 +42,6 @@ public class PersonRestController implements PersonRest {
     }
 
     @Override
-    public List<PersonDto> getAllPersons() {
-        return service.getAllPersons();
-    }
+    public List<PersonDto> getAllPersons() { return service.getAllPersons(); }
+
 }
