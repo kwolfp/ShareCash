@@ -4,7 +4,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.edu.wat.share.cash.common.dto.GroupDto;
+import pl.edu.wat.share.cash.common.dto.PersonDto;
 import pl.edu.wat.share.cash.common.rest.base.BaseRest;
 
 import java.util.List;
@@ -27,4 +29,7 @@ public interface GroupRest extends BaseRest {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     List<GroupDto> getAllGroups();
+
+    @RequestMapping(value = "/{groupId}/members/add", method = RequestMethod.PUT)
+    GroupDto addMember(@PathVariable("groupId") Long groupId, @RequestParam("percent") Integer percent, @RequestBody PersonDto person);
 }

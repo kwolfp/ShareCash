@@ -3,8 +3,10 @@ package pl.edu.wat.share.cash.engine.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pl.edu.wat.share.cash.common.dto.GroupDto;
+import pl.edu.wat.share.cash.common.dto.PersonDto;
 import pl.edu.wat.share.cash.common.rest.GroupRest;
 import pl.edu.wat.share.cash.engine.service.GroupService;
 
@@ -12,6 +14,7 @@ import java.util.List;
 
 @RestController
 public class GroupRestController implements GroupRest {
+
     @Autowired
     GroupService service;
 
@@ -38,5 +41,10 @@ public class GroupRestController implements GroupRest {
 
     @Override
     public List<GroupDto> getAllGroups() { return service.getAllGroups();
+    }
+
+    @Override
+    public GroupDto addMember(@PathVariable("groupId") Long groupId, @RequestParam("percent") Integer percent, @RequestBody PersonDto person) {
+        return service.addMember(groupId, person, percent);
     }
 }

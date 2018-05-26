@@ -21,6 +21,7 @@ public class TransactionProvider extends BaseCrudProvider<Transaction, Transacti
     @Autowired
     GroupRepository groupRepository;
 
+
     public TransactionDto createTransaction(TransactionDto transaction) {
         return convert(transactionRepository.save(convert(transaction, null)));
     }
@@ -39,6 +40,10 @@ public class TransactionProvider extends BaseCrudProvider<Transaction, Transacti
 
     public List<TransactionDto> getAllTransactions() {
         return convert(transactionRepository.findAll());
+    }
+
+    public List<TransactionDto> getTransactionByPersonId(Long personId) {
+        return convert(transactionRepository.getTransactionsByPersonId(personId));
     }
 
     @Override

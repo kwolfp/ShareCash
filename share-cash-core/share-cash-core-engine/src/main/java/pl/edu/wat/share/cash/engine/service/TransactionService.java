@@ -10,4 +10,5 @@ public interface TransactionService {
     TransactionDto getTransaction(Long transactionId);
     void deleteTransaction(Long transactionId);
     List<TransactionDto> getAllTransactions();
+    List<TransactionDto> getTransactionByPersonId(Long personId);
 }

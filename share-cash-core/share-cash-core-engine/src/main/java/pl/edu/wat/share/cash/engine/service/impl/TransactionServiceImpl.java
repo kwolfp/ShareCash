@@ -9,8 +9,10 @@ import pl.edu.wat.share.cash.engine.service.TransactionService;
 import java.util.List;
 @Service
 public class TransactionServiceImpl implements TransactionService{
+
     @Autowired
     TransactionProvider transactionProvider;
+
 
     @Override
     public TransactionDto createTransaction(TransactionDto transaction) {
@@ -34,4 +36,9 @@ public class TransactionServiceImpl implements TransactionService{
 
     @Override
     public List<TransactionDto> getAllTransactions() { return transactionProvider.getAllTransactions(); }
+
+    @Override
+    public List<TransactionDto> getTransactionByPersonId(Long personId) {
+        return transactionProvider.getTransactionByPersonId(personId);
+    }
 }

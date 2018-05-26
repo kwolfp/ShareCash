@@ -3,12 +3,14 @@ package pl.edu.wat.share.cash.engine.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 import pl.edu.wat.share.cash.common.dto.TransactionDto;
 import pl.edu.wat.share.cash.common.rest.TransactionRest;
 import pl.edu.wat.share.cash.engine.service.TransactionService;
 
 import java.util.List;
 
+@RestController
 public class TransactionRestController implements TransactionRest {
 
     @Autowired
@@ -37,5 +39,10 @@ public class TransactionRestController implements TransactionRest {
 
     @Override
     public List<TransactionDto> getAllTransactions() { return service.getAllTransactions(); }
+
+    @Override
+    public List<TransactionDto> getTransactionByPersonId(@PathVariable("personId") Long personId) {
+        return service.getTransactionByPersonId(personId);
+    }
 
 }

@@ -31,4 +31,7 @@ public interface TransactionRest {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     List<TransactionDto> getAllTransactions();
 
+    @RequestMapping(value = "/persons/{personId}", method = RequestMethod.GET)
+    List<TransactionDto> getTransactionByPersonId(@PathVariable("personId") Long personId);
+
 }

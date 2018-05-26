@@ -11,6 +11,7 @@ import pl.edu.wat.share.cash.domain.entity.Group;
 import pl.edu.wat.share.cash.domain.entity.Person;
 import pl.edu.wat.share.cash.domain.entity.Transaction;
 import pl.edu.wat.share.cash.engine.repository.GroupRepository;
+import pl.edu.wat.share.cash.engine.repository.PersonGroupRepository;
 import pl.edu.wat.share.cash.engine.repository.PersonRepository;
 import pl.edu.wat.share.cash.engine.repository.TransactionRepository;
 
@@ -21,12 +22,19 @@ import java.util.stream.Collectors;
 
 @Component
 public class GroupProvider extends BaseCrudProvider<Group, GroupDto> {
+
     @Autowired
     GroupRepository groupRepository;
+
     @Autowired
     PersonRepository repository;
+
     @Autowired
     TransactionRepository transactionRepository;
+
+    @Autowired
+    PersonGroupRepository personGroupRepository;
+
 
     public GroupDto createGroup(GroupDto group) {
         return convert(groupRepository.save(convert(group, null)));
@@ -45,6 +53,7 @@ public class GroupProvider extends BaseCrudProvider<Group, GroupDto> {
     }
 
     public List<GroupDto> getAllGroups() { return convert(groupRepository.findAll());}
+
     @Override
     protected Group convert(GroupDto dto, Group entity) {
         if (entity == null) {
