@@ -43,4 +43,7 @@ public class Person extends BaseEntity {
     @OneToMany(mappedBy = "owner")
     List<CreditCard> creditCards;
 
+    @OneToMany(mappedBy = "owner")
+    List<Group> groups;
+
 }

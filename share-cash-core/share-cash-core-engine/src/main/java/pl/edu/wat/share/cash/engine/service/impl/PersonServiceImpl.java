@@ -2,7 +2,9 @@ package pl.edu.wat.share.cash.engine.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.edu.wat.share.cash.common.dto.GroupDto;
 import pl.edu.wat.share.cash.common.dto.PersonDto;
+import pl.edu.wat.share.cash.engine.provider.GroupProvider;
 import pl.edu.wat.share.cash.engine.provider.PersonProvider;
 import pl.edu.wat.share.cash.engine.service.PersonService;
 
@@ -17,7 +19,6 @@ public class PersonServiceImpl implements PersonService {
 
     @Autowired
     PersonProvider provider;
-
 
     @Override
     public PersonDto createPerson(PersonDto person) {
@@ -43,5 +44,7 @@ public class PersonServiceImpl implements PersonService {
     public List<PersonDto> getAllPersons() {
         return provider.getAllPersons();
     }
+
+
 
 }

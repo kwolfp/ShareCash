@@ -13,6 +13,7 @@ import java.util.List;
  * Created by Kamil Przyborowski
  * Wojskowa Akademia Techniczna im. Jarosława Dąbrowskiego, Warszawa 2018.
  */
+@RequestMapping(PersonRest.PATH)
 public interface PersonRest extends BaseRest {
     String PATH = BASE_PATH + "persons";
 

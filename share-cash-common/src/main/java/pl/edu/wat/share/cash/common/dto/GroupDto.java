@@ -6,22 +6,21 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import pl.edu.wat.share.cash.common.dto.base.BaseDto;
 
+import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Kamil Przyborowski
- * Wojskowa Akademia Techniczna im. Jarosława Dąbrowskiego, Warszawa 2018.
- */
 @Data
-@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class PersonDto extends BaseDto<Long> {
-
+@EqualsAndHashCode(callSuper = true)
+public class GroupDto extends BaseDto<Long> {
+    private Long ownerId;
     private String name;
-    private String lastName;
+    private Integer password;
+    private Date creationDate;
 
-    private List<CreditCardDto> creditCards;
-    private List<GroupDto> groups;
+    private List<TransactionDto> transactions;
 
+
+    
 }
