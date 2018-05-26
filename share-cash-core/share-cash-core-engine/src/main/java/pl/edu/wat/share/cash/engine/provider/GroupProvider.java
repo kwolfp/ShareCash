@@ -9,8 +9,10 @@ import pl.edu.wat.share.cash.domain.entity.CreditCard;
 import pl.edu.wat.share.cash.domain.entity.Group;
 
 import pl.edu.wat.share.cash.domain.entity.Person;
+import pl.edu.wat.share.cash.domain.entity.Transaction;
 import pl.edu.wat.share.cash.engine.repository.GroupRepository;
 import pl.edu.wat.share.cash.engine.repository.PersonRepository;
+import pl.edu.wat.share.cash.engine.repository.TransactionRepository;
 
 import java.util.List;
 import java.util.Objects;
@@ -23,6 +25,8 @@ public class GroupProvider extends BaseCrudProvider<Group, GroupDto> {
     GroupRepository groupRepository;
     @Autowired
     PersonRepository repository;
+    @Autowired
+    TransactionRepository transactionRepository;
 
     public GroupDto createGroup(GroupDto group) {
         return convert(groupRepository.save(convert(group, null)));
@@ -53,6 +57,14 @@ public class GroupProvider extends BaseCrudProvider<Group, GroupDto> {
 
         if(dto.getOwnerId() != null) {
             entity.setOwner(repository.getOne(dto.getOwnerId()));
+        }
+
+        if(dto.getTransactions() != null) {
+            List<Transaction> transactions = dto.getTransactions().stream()
+                    .filter(Objects::nonNull)
+                    .map(cc -> transactionRepository.getOne(cc.getId()))
+                    .collect(Collectors.toList());
+            entity.setTransactions(transactions);
         }
         return entity;
     }

@@ -82,11 +82,11 @@ public class PersonProvider extends BaseCrudProvider<Person, PersonDto> {
 
         if(dto.getGroups()!=null){
 
-        List<Group> groups = dto.getGroups().stream()
+            List<Group> groups = dto.getGroups().stream()
                 .filter(Objects::nonNull)
                 .map(gr ->groupRepository.getOne(gr.getId()))
                 .collect(Collectors.toList());
-        entity.setGroups(groups);
+            entity.setGroups(groups);
         }
 
 

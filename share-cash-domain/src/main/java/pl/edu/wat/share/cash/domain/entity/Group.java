@@ -7,6 +7,7 @@ import pl.edu.wat.share.cash.domain.entity.base.BaseEntity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Kamil Przyborowski, Date: 25.05.2018
@@ -35,6 +36,9 @@ public class Group extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "ownerId")
     Person owner;
+
+    @OneToMany(mappedBy = "payer")
+    List<Transaction> transactions;
 
     @Column
     Date creationDate;

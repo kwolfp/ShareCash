@@ -6,21 +6,18 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import pl.edu.wat.share.cash.common.dto.base.BaseDto;
 
+import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 @Data
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class GroupDto extends BaseDto<Long> {
-    private Long ownerId;
+public class TransactionDto extends BaseDto<Long> {
+    private Long payerId;
     private String name;
-    private Integer password;
-    private Date creationDate;
-
-    private List<TransactionDto> transactions;
-
-
-    
+    private BigDecimal amount;
+    private String adress;
+    private Long accNumber;
+    private Date transactionDate;
 }

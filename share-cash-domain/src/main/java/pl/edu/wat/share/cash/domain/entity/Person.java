@@ -45,4 +45,5 @@ public class Person extends BaseEntity {
 
     @OneToMany(mappedBy = "owner")
     List<Group> groups;
+
 }

@@ -19,8 +19,6 @@ public class PersonServiceImpl implements PersonService {
 
     @Autowired
     PersonProvider provider;
-    @Autowired
-    GroupProvider groupProvider;
 
     @Override
     public PersonDto createPerson(PersonDto person) {
