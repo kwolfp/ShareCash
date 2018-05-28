@@ -47,7 +47,7 @@ public class PersonProvider extends BaseCrudProvider<Person, PersonDto> {
     }
 
     public void deletePerson(Long personId) {
-        repository.deleteById(personId);
+        repository.delete(personId);
     }
 
     public List<PersonDto> getAllPersons() { return convert(repository.findAll());

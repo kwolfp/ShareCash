@@ -49,7 +49,7 @@ public class GroupProvider extends BaseCrudProvider<Group, GroupDto> {
     }
 
     public void deleteGroup(Long groupId) {
-        groupRepository.deleteById(groupId);
+        groupRepository.delete(groupId);
     }
 
     public List<GroupDto> getAllGroups() { return convert(groupRepository.findAll());}
