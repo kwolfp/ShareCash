@@ -1,5 +1,6 @@
 package pl.edu.wat.share.cash.web.factory;
 
+import com.github.ggeorgovassilis.springjsonmapper.spring.OAuth2SpringRestInvokerProxyFactoryBean;
 import com.github.ggeorgovassilis.springjsonmapper.spring.SpringRestInvokerProxyFactoryBean;
 import groovy.lang.Singleton;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,7 +20,7 @@ public class RestBeanFactory {
     private String restUrl;
 
     private SpringRestInvokerProxyFactoryBean getRestInvokerForInterface(Class<?> clazz) {
-        SpringRestInvokerProxyFactoryBean invoker = new SpringRestInvokerProxyFactoryBean();
+        SpringRestInvokerProxyFactoryBean invoker = new OAuth2SpringRestInvokerProxyFactoryBean();
         invoker.setBaseUrl(restUrl);
         invoker.setRemoteServiceInterfaceClass(clazz);
         return invoker;

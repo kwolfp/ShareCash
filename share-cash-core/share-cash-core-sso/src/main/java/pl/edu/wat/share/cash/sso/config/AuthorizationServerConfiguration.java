@@ -2,6 +2,7 @@ package pl.edu.wat.share.cash.sso.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -10,7 +11,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 
 /**
- * Created by Kamil Przyborowski, Date: 28.05.2018
+ * Created by Kamil Przyborowski, Date: 29.05.2018
  * Copyright by Wojskowa Akademia Techniczna im. Jarosława Dąbrowskiego, Warszawa 2018
  */
 @Configuration
@@ -31,9 +32,9 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
                 .withClient("ShareCashApp")
-                .secret("AfaSGasdasgAw%$QrDFASfa42")
+                .secret("f7f5d77e76a67f787ef6da8c")
                 .authorizedGrantTypes("authorization_code")
-                .scopes("user_info")
+                .scopes("read", "write")
                 .autoApprove(true);
     }
 

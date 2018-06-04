@@ -21,6 +21,18 @@ spring:
     rest:
       base-path: /jpa
 
+security:
+  basic:
+    enabled: false
+  oauth2:
+    client:
+      clientId: ShareCashApp
+      clientSecret: f7f5d77e76a67f787ef6da8c
+      accessTokenUri: http://localhost:8043/auth/oauth/token
+      userAuthorizationUri: http://localhost:8043/auth/oauth/authorize
+    resource:
+      userInfoUri: http://localhost:8043/auth/user/me
+
 logging:
     level:
       org.springframework.web: DEBUG
