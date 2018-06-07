@@ -47,6 +47,9 @@ public class Person extends BaseEntity {
     List<Group> groups;
 
     @Column(nullable = false, unique = true)
+    String email;
+
+    @Column(nullable = false, unique = true)
     String userName;
 
     @Column

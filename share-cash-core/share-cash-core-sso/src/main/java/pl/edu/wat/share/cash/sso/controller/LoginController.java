@@ -14,7 +14,6 @@ public class LoginController {
 
     @RequestMapping(value = "/signIn", method = RequestMethod.GET)
     public String getSignInPage() {
-
         return "signIn";
     }
 
