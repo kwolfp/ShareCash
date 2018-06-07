@@ -10,6 +10,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <packaging>war</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>pl.edu.wat</groupId>
+            <artifactId>share-cash-domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
     <artifactId>share-cash-core-sso</artifactId>
 
@@ -25,7 +33,7 @@
                 <dependency>
                     <groupId>org.springframework</groupId>
                     <artifactId>spring-webmvc</artifactId>
-                    <version>5.0.6.RELEASE</version>
+                    <version>4.3.17.RELEASE</version>
                 </dependency>
                 <dependency>
                     <groupId>nz.net.ultraq.thymeleaf</groupId>
@@ -43,8 +51,29 @@
                     <version>${thymeleaf.version}</version>
                 </dependency>
                 <dependency>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-security</artifactId>
+                    <groupId>org.springframework.security.oauth</groupId>
+                    <artifactId>spring-security-oauth2</artifactId>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.webjars</groupId>
+                    <artifactId>jquery</artifactId>
+                    <version>3.3.1-1</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.webjars</groupId>
+                    <artifactId>bootstrap</artifactId>
+                    <version>4.1.0</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.webjars</groupId>
+                    <artifactId>font-awesome</artifactId>
+                    <version>5.0.13</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.webjars</groupId>
+                    <artifactId>popper.js</artifactId>
+                    <version>1.14.1</version>
                 </dependency>
             </dependencies>
         </profile>

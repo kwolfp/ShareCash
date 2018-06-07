@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import pl.edu.wat.share.cash.common.rest.PersonRest;
+import pl.edu.wat.share.cash.web.rest.invoker.OAuth2SpringRestInvokerProxyFactoryBean;
 
 /**
  * Created by Kamil Przyborowski
@@ -19,7 +20,7 @@ public class RestBeanFactory {
     private String restUrl;
 
     private SpringRestInvokerProxyFactoryBean getRestInvokerForInterface(Class<?> clazz) {
-        SpringRestInvokerProxyFactoryBean invoker = new SpringRestInvokerProxyFactoryBean();
+        SpringRestInvokerProxyFactoryBean invoker = new OAuth2SpringRestInvokerProxyFactoryBean();
         invoker.setBaseUrl(restUrl);
         invoker.setRemoteServiceInterfaceClass(clazz);
         return invoker;

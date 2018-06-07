@@ -1,9 +1,10 @@
 server:
-  port: 8090
-  session:
-    cookie:
-      name: JSESSIONID
-      max-age: -1
+  port: 8043
+  context-path: /auth
+
+security:
+  basic:
+    enabled: false
 
 spring:
   datasource:
@@ -15,23 +16,14 @@ spring:
       ddl-auto: update
       use-new-id-generator-mappings: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-  thymeleaf:
-    cache: false
   data:
     rest:
       base-path: /jpa
-
-security:
-  basic:
-    enabled: false
-  oauth2:
-    client:
-      clientId: ShareCashApp
-      clientSecret: f7f5d77e76a67f787ef6da8c
-      accessTokenUri: http://localhost:8043/auth/oauth/token
-      userAuthorizationUri: http://localhost:8043/auth/oauth/authorize
-    resource:
-      userInfoUri: http://localhost:8043/auth/user/me
+  thymeleaf:
+    cache: false
+    prefix: file:src/main/resources/static/templates/
+  resources:
+    static-locations: file:src/main/resources/static/
 
 logging:
     level:

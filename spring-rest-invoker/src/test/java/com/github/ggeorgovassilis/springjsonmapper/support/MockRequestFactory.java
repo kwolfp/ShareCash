@@ -104,11 +104,6 @@ public class MockRequestFactory implements ClientHttpRequestFactory {
 		}
 
 		@Override
-		public String getMethodValue() {
-			return "";
-		}
-
-		@Override
 		public URI getURI() {
 			return uri;
 		}
