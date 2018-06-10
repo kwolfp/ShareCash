@@ -10,7 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @ComponentScan({"pl.edu.wat.share.cash.web.controller",
         "pl.edu.wat.share.cash.web.factory",
-        "pl.edu.wat.share.cash.web.config"})
+        "pl.edu.wat.share.cash.web.config",
+        "pl.edu.wat.share.cash.web.session"})
 @SpringBootApplication
 public class WebApplication extends SpringBootServletInitializer {
 

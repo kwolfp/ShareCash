@@ -21,7 +21,7 @@ spring:
       base-path: /jpa
   thymeleaf:
     cache: false
-    prefix: file:src/main/resources/static/templates/
+    prefix: file:src/main/resources/templates/
   resources:
     static-locations: file:src/main/resources/static/
 

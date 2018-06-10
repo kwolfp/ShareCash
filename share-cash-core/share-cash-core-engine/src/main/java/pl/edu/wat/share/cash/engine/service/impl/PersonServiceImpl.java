@@ -45,6 +45,10 @@ public class PersonServiceImpl implements PersonService {
         return provider.getAllPersons();
     }
 
+    @Override
+    public PersonDto getPersonByUserName(String username) {
+        return provider.getPersonByUserName(username);
+    }
 
 
 }
