@@ -7,6 +7,8 @@ import pl.edu.wat.share.cash.engine.provider.CreditCardProvider;
 
 import pl.edu.wat.share.cash.engine.service.CreditCardService;
 
+import java.util.List;
+
 @Service
 public class CreditCardServiceImpl implements CreditCardService {
 
@@ -30,6 +32,11 @@ public class CreditCardServiceImpl implements CreditCardService {
     @Override
     public void deleteCreditCard(Long creditCardId) {
         cardProvider.deleteCreditCard(creditCardId);
+    }
+
+    @Override
+    public List<CreditCardDto>getCreditCardsByOwnerId(Long ownerId) {
+        return cardProvider.getCreditCardsByOwnerId(ownerId);
     }
 
 }

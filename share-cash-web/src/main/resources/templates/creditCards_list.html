@@ -1,0 +1,19 @@
+<legend>Aktywne karty</legend>
+<table xmlns:th="http://www.w3.org/1999/xhtml" class="table table-hover">
+    <thead>
+    <tr>
+        <th>Dostawca</th>
+        <th>Numer Karty</th>
+        <th>Właściciel</th>
+        <th>Data Wygaśnięcia</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="creditCard, itr : ${creditCards}">
+        <td th:text="${creditCard?.provider}"></td>
+        <td th:text="${creditCard?.cardNumber}"></td>
+        <td th:text="${creditCard?.ownerName}"></td>
+        <td th:text="${creditCard?.exp}"></td>
+    </tr>
+    </tbody>
+</table>

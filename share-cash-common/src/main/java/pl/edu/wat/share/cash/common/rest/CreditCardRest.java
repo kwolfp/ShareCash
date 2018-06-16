@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import pl.edu.wat.share.cash.common.dto.CreditCardDto;
 import pl.edu.wat.share.cash.common.rest.base.BaseRest;
 
+import java.util.List;
+
 
 @RequestMapping(CreditCardRest.PATH)
 public interface CreditCardRest extends BaseRest {
@@ -22,4 +24,7 @@ public interface CreditCardRest extends BaseRest {
 
     @RequestMapping(value = "/delete/{creditCardId}", method = RequestMethod.DELETE)
     void deleteCreditCard(@PathVariable("creditCardId") Long creditCardId);
+
+    @RequestMapping(value = "/persons/{ownerId}", method = RequestMethod.GET)
+    List<CreditCardDto> getCreditCardsByOwnerId(@PathVariable("ownerId") Long ownerId);
 }

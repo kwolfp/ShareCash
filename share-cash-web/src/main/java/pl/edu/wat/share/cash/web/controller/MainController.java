@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import pl.edu.wat.share.cash.common.dto.CreditCardDto;
 import pl.edu.wat.share.cash.common.dto.PersonDto;
 import pl.edu.wat.share.cash.common.dto.TransactionDto;
+import pl.edu.wat.share.cash.common.rest.CreditCardRest;
 import pl.edu.wat.share.cash.common.rest.TransactionRest;
 
 import java.util.List;
@@ -21,6 +23,9 @@ public class MainController extends BaseController {
 
     @Autowired
     TransactionRest transactionRest;
+
+    @Autowired
+    CreditCardRest creditCardRest;
 
 
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -41,8 +46,18 @@ public class MainController extends BaseController {
         model.addAttribute("transactions", transactions);
         return "transactions";
     }
-    @RequestMapping(value = "creditCards", method = RequestMethod.GET)
+    @RequestMapping(value = "creditCards/add", method = RequestMethod.GET)
     public String getCreditCardsPage() {
         return "creditCards";
+    }
+
+    @RequestMapping(value = "creditCards/list", method = RequestMethod.GET)
+    public String getCreditCardsList(Model models) {
+        PersonDto person = getLoggedInPerson();
+        List<CreditCardDto> creditCards = creditCardRest.getCreditCardsByOwnerId(person.getId());
+
+        models.addAttribute("creditCards", creditCards);
+        return "creditCards_list";
+
     }
 }

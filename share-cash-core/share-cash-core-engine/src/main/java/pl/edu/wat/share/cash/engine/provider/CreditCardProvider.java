@@ -4,11 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.edu.wat.share.cash.common.dto.CreditCardDto;
 import pl.edu.wat.share.cash.common.dto.PersonDto;
+import pl.edu.wat.share.cash.common.dto.TransactionDto;
 import pl.edu.wat.share.cash.common.provider.BaseCrudProvider;
 import pl.edu.wat.share.cash.domain.entity.CreditCard;
 import pl.edu.wat.share.cash.domain.entity.Group;
 import pl.edu.wat.share.cash.engine.repository.CreditCardRepository;
 import pl.edu.wat.share.cash.engine.repository.PersonRepository;
+
+import java.util.List;
 
 @Component
 public class CreditCardProvider extends BaseCrudProvider<CreditCard, CreditCardDto> {
@@ -17,7 +20,6 @@ public class CreditCardProvider extends BaseCrudProvider<CreditCard, CreditCardD
     CreditCardRepository creditCardRepository;
     @Autowired
     PersonRepository repository;
-
     public CreditCardDto createCreditCard(CreditCardDto creditCard) { return convert(creditCardRepository.save(convert(creditCard, null))); }
 
     public CreditCardDto updateCreditCard(Long creditCardId, CreditCardDto creditCard) { return convert(creditCardRepository.save(convert(creditCard, creditCardRepository.getOne(creditCardId))));
@@ -29,6 +31,10 @@ public class CreditCardProvider extends BaseCrudProvider<CreditCard, CreditCardD
 
     public void deleteCreditCard(Long creditCardId) {
         creditCardRepository.delete(creditCardId);
+    }
+
+    public List<CreditCardDto> getCreditCardsByOwnerId(Long ownerId) {
+        return convert(creditCardRepository.getCreditCardsByOwnerId(ownerId));
     }
 
     @Override

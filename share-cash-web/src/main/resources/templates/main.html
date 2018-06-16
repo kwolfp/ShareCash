@@ -45,11 +45,19 @@
                     <span class="nav-link-text">Transakcje</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="creditCards">
-                <a class="nav-link" href="creditCards">
-                    <i class="fa fa-fw fa-area-chart"></i>
-                    <span class="nav-link-text">Twoje karty płatnicze</span>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="CreditCards">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseCreditCards" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-credit-card"></i>
+                    <span class="nav-link-text">Twoje karty kredytowe</span>
                 </a>
+                <ul class="sidenav-second-level collapse" id="collapseCreditCards">
+                    <li>
+                        <a href="creditCards_list">Lista kart</a>
+                    </li>
+                    <li>
+                        <a href="creditCards_add">Dodaj kartę</a>
+                    </li>
+                </ul>
             </li>
         </ul>
         <ul class="navbar-nav sidenav-toggler">

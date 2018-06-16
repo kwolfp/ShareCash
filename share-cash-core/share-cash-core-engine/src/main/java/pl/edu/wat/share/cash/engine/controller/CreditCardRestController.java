@@ -8,6 +8,8 @@ import pl.edu.wat.share.cash.common.dto.CreditCardDto;
 import pl.edu.wat.share.cash.common.rest.CreditCardRest;
 import pl.edu.wat.share.cash.engine.service.CreditCardService;
 
+import java.util.List;
+
 @RestController
 public class CreditCardRestController implements CreditCardRest {
 
@@ -31,7 +33,10 @@ public class CreditCardRestController implements CreditCardRest {
     @Override
     public void deleteCreditCard(@PathVariable("creditCardId") Long creditCardId) {
         creditCardService.deleteCreditCard(creditCardId);
+    }
 
-
+    @Override
+    public List<CreditCardDto> getCreditCardsByOwnerId(@PathVariable("ownerId") Long ownerId) {
+        return creditCardService.getCreditCardsByOwnerId(ownerId);
     }
 }

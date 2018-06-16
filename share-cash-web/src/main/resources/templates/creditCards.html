@@ -1,4 +1,3 @@
-
 <form class="form-horizontal" role="form" ng-controller="CreditCardController" ng-submit="addCreditCard()">
     <fieldset>
         <legend>Dodaj nową kartę</legend>
@@ -6,15 +5,6 @@
             <label class="col-sm-3 control-label" for="card_owner">Właściciel karty</label>
             <div class="col-sm-3">
                 <input type="text" class="form-control" name="owner_name" ng-model="owner_name" id="card_owner" placeholder="Imię i nazwisko właściciela">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label" for="provider_card">Rodzaj </label>
-            <div class="col-sm-3">
-                <select name="provider" class="form-control" id="provider_card" ng-model="provider">
-                    <option value="VISA">VISA</option>
-                    <option value="MASTER_CARD">Master Card</option>
-                </select>
             </div>
         </div>
         <div class="form-group">
@@ -30,6 +20,15 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="col-sm-3 control-label" for="provider_card">Rodzaj </label>
+            <div class="col-sm-2">
+                <select name="provider" class="form-control" id="provider_card" ng-model="provider">
+                    <option value="VISA">VISA</option>
+                    <option value="MASTER_CARD">Master Card</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-sm-3 control-label" for="card-number">Numer karty</label>
             <div class="col-sm-4">
                 <input type="text" class="form-control" name="card_number" id="card-number" ng-model="card_number" placeholder="Numer karty kredytowej/debetowej">
@@ -38,7 +37,7 @@
         <div class="form-group">
             <label class="col-sm-3 control-label">Data wygaśnięcia</label>
             <div class="col-sm-2">
-                <input type="text" class="form-control" name="expiration_date" id="exp" ng-model="expiration_date" placeholder="Miesiąc/Rok">
+                <input type="text" class="form-control" name="expiration_date" id="exp" ng-model="exp" placeholder="Miesiąc/Rok">
             </div>
         </div>
 

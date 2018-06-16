@@ -12,13 +12,20 @@
                     url : '/creditCards/create',
                     headers: CSRF.header,
                     data: {
-                         provider: $scope.provider,
-
+                        provider: $scope.provider,
+                        cardNumber: $scope.card_number,
+                        ownerName: $scope.owner_name,
+                        ownerAddress: $scope.owner_address,
+                        country: $scope.country,
+                        csc: $scope.csc,
+                        exp: Date.parse("01/"+$scope.exp)
                     }
                 }).then(function successCallback(response) {
                     console.log(response.data);
+                    alert("Dodano kartę")
                 }, function errorCallback(response) {
                     console.log(response.statusText);
+                    alert("Niepoprawne dane")
                 });
             }
         })
@@ -32,11 +39,14 @@
                     templateUrl: 'transactions',
                     controller: 'TransactionsController'
                 })
-                .when('/creditCards', {
-                    templateUrl: 'creditCards',
+                .when('/creditCards_add', {
+                    templateUrl: 'creditCards/add',
                     controller: 'CreditCardController'
-                 });
-
+                 })
+                .when('/creditCards_list', {
+                    templateUrl: 'creditCards/list',
+                    controller: 'CreditCardController'
+                });
             $locationProvider.html5Mode({
                 enabled: true,
                 requireBase: false
