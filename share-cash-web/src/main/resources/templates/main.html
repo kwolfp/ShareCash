@@ -15,6 +15,13 @@
     <link th:href="@{/webjars/metisMenu/2.7.0/metisMenu.min.css}" rel="stylesheet">
     <link th:href="@{/css/sb-admin.css}" rel="stylesheet">
     <link th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+    <script th:inline="javascript" type="text/javascript">
+        var CSRF = function() {};
+        CSRF.headerName = /*[[${_csrf.headerName}]]*/ '';
+        CSRF.token = /*[[${_csrf.token}]]*/ '';
+        CSRF.header = {};
+        CSRF.header[CSRF.headerName] = CSRF.token;
+    </script>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top" ng-app="shareCashApp">
