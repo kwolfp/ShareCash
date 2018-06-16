@@ -41,5 +41,8 @@ public class MainController extends BaseController {
         model.addAttribute("transactions", transactions);
         return "transactions";
     }
-
+    @RequestMapping(value = "creditCards", method = RequestMethod.GET)
+    public String getCreditCardsPage() {
+        return "creditCards";
+    }
 }

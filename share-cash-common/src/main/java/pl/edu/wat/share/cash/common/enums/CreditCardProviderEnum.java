@@ -5,5 +5,5 @@ package pl.edu.wat.share.cash.common.enums;
  * Copyright by Wojskowa Akademia Techniczna im. Jarosława Dąbrowskiego, Warszawa 2018
  */
 public enum CreditCardProviderEnum {
-    VISI, MASTER_CARD
+    VISA, MASTER_CARD
 }
