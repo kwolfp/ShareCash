@@ -14,5 +14,5 @@ public interface PersonService {
     PersonDto getPerson(Long personId);
     void deletePerson(Long personId);
     List<PersonDto> getAllPersons();
-
+    PersonDto getPersonByUserName(String username);
 }

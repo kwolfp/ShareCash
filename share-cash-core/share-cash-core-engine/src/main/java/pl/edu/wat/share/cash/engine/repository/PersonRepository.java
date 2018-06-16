@@ -10,4 +10,5 @@ import pl.edu.wat.share.cash.domain.entity.Person;
  */
 @RepositoryRestResource(collectionResourceRel = "person", path = "person")
 public interface PersonRepository extends JpaRepository<Person, Long> {
+    Person findPersonByUserName(String username);
 }

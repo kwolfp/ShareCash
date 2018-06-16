@@ -34,6 +34,7 @@ public class PersonProvider extends BaseCrudProvider<Person, PersonDto> {
     @Autowired
     GroupRepository groupRepository;
 
+
     public PersonDto createPerson(PersonDto person) {
         return convert(repository.save(convert(person, null)));
     }
@@ -50,9 +51,12 @@ public class PersonProvider extends BaseCrudProvider<Person, PersonDto> {
         repository.delete(personId);
     }
 
-    public List<PersonDto> getAllPersons() { return convert(repository.findAll());
+    public List<PersonDto> getAllPersons() {
+        return convert(repository.findAll());
+    }
 
-//
+    public PersonDto getPersonByUserName(String username) {
+        return convert(repository.findPersonByUserName(username));
     }
 
 

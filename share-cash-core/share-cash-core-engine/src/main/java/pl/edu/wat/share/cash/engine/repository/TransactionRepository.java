@@ -13,7 +13,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
 
     @Query(value = "select tr from t_transaction tr " +
                    "where tr.group_id in ( " +
-                   "  select distinct pg.group_id from t_person_group pg where pg.person_id = :personId " +
+                   "  select distinct pg.group_id from t_person_group pg where pg.person_id = ?1 " +
                    ")",nativeQuery = true)
-    List<Transaction> getTransactionsByPersonId(@Param("personId") Long personId);
+    List<Transaction> getTransactionsByPersonId(Long personId);
 }

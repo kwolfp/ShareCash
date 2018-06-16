@@ -33,4 +33,7 @@ public interface PersonRest extends BaseRest {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     List<PersonDto> getAllPersons();
 
+    @RequestMapping(value = "/names/{username}", method = RequestMethod.GET)
+    PersonDto getPersonByUserName(@PathVariable("username") String username);
+
 }

@@ -44,4 +44,9 @@ public class PersonRestController implements PersonRest {
     @Override
     public List<PersonDto> getAllPersons() { return service.getAllPersons(); }
 
+    @Override
+    public PersonDto getPersonByUserName(@PathVariable("username") String username) {
+        return service.getPersonByUserName(username);
+    }
+
 }
