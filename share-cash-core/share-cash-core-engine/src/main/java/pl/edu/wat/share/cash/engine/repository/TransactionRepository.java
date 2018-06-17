@@ -11,7 +11,7 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "transaction", path = "transaction")
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 
-    @Query(value = "select tr from t_transaction tr " +
+    @Query(value = "select * from t_transaction tr " +
                    "where tr.group_id in ( " +
                    "  select distinct pg.group_id from t_person_group pg where pg.person_id = ?1 " +
                    ")",nativeQuery = true)
