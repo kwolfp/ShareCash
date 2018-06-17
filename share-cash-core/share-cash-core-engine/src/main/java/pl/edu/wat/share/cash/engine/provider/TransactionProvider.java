@@ -49,7 +49,7 @@ public class TransactionProvider extends BaseCrudProvider<Transaction, Transacti
 
     public TransactionDto getLastTransactionByPersonId(Long personId) {
         List<TransactionDto> transactionDtoList = convert(transactionRepository.getLastTransactionByPersonId(personId));
-        return transactionDtoList.get(0);
+        return transactionDtoList.size() > 0 ? transactionDtoList.get(0) : null;
     }
 
     @Override

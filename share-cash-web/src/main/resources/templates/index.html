@@ -5,7 +5,7 @@
                 <div class="card-body-icon">
                     <i class="fa fa-fw fa-money"></i>
                 </div>
-                <div class="mr-5">Wysokość ostatniej transakcji: <strong th:text="${lastTransaction.amount+'PLN'}">235PLN</strong></div>
+                <div class="mr-5">Wysokość ostatniej transakcji: <strong th:text="${lastTransaction != null ? lastTransaction.amount+'PLN' : 'Brak transakcji'}">235PLN</strong></div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="transactions">
                 <span class="float-left">Zobacz wszystkie transakcje</span>
