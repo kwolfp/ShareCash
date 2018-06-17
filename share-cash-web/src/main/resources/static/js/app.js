@@ -5,6 +5,8 @@
         })
         .controller('TransactionsController', function($scope) {
         })
+        .controller('GroupsController', function($scope) {
+        })
         .controller('CreditCardController', function($scope, $http) {
             $scope.addCreditCard=function () {
                 $http({
@@ -46,6 +48,9 @@
                 .when('/creditCards_list', {
                     templateUrl: 'creditCards/list',
                     controller: 'CreditCardController'
+                }).when('/groups', {
+                    templateUrl: 'groups',
+                    controller: 'GroupsController'
                 });
             $locationProvider.html5Mode({
                 enabled: true,

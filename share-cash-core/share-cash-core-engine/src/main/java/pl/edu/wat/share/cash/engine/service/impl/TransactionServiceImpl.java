@@ -41,4 +41,9 @@ public class TransactionServiceImpl implements TransactionService{
     public List<TransactionDto> getTransactionByPersonId(Long personId) {
         return transactionProvider.getTransactionByPersonId(personId);
     }
+
+    @Override
+    public TransactionDto getLastTransactionByPersonId(Long personId) {
+        return transactionProvider.getLastTransactionByPersonId(personId);
+    }
 }
