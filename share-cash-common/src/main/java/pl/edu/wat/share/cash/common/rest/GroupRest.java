@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.edu.wat.share.cash.common.dto.GroupDto;
+import pl.edu.wat.share.cash.common.dto.JoinGroupDto;
 import pl.edu.wat.share.cash.common.dto.PersonDto;
+import pl.edu.wat.share.cash.common.enums.GroupJoinStatusEnum;
 import pl.edu.wat.share.cash.common.rest.base.BaseRest;
 
 import java.util.List;
@@ -32,4 +34,10 @@ public interface GroupRest extends BaseRest {
 
     @RequestMapping(value = "/{groupId}/members/add", method = RequestMethod.PUT)
     GroupDto addMember(@PathVariable("groupId") Long groupId, @RequestParam("percent") Integer percent, @RequestBody PersonDto person);
+
+    @RequestMapping(value = "/{groupId}/join", method = RequestMethod.PUT)
+    GroupJoinStatusEnum joinGroup(@PathVariable("groupId") Long groupId, @RequestBody JoinGroupDto joinGroup);
+
+    @RequestMapping(value = "/members/{personId}", method = RequestMethod.GET)
+    List<GroupDto> getGroupsByMemberId(@PathVariable("personId") Long personId);
 }

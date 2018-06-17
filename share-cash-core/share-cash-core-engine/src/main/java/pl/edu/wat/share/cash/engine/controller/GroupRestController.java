@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pl.edu.wat.share.cash.common.dto.GroupDto;
+import pl.edu.wat.share.cash.common.dto.JoinGroupDto;
 import pl.edu.wat.share.cash.common.dto.PersonDto;
+import pl.edu.wat.share.cash.common.enums.GroupJoinStatusEnum;
 import pl.edu.wat.share.cash.common.rest.GroupRest;
 import pl.edu.wat.share.cash.engine.service.GroupService;
 
@@ -46,5 +48,15 @@ public class GroupRestController implements GroupRest {
     @Override
     public GroupDto addMember(@PathVariable("groupId") Long groupId, @RequestParam("percent") Integer percent, @RequestBody PersonDto person) {
         return service.addMember(groupId, person, percent);
+    }
+
+    @Override
+    public GroupJoinStatusEnum joinGroup(@PathVariable("groupId") Long groupId, @RequestBody JoinGroupDto joinGroup) {
+        return service.joinGroup(groupId, joinGroup);
+    }
+
+    @Override
+    public List<GroupDto> getGroupsByMemberId(@PathVariable("personId") Long personId) {
+        return service.getGroupsByMemberId(personId);
     }
 }

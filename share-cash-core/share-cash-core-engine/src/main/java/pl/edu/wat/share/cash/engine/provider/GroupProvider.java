@@ -15,6 +15,7 @@ import pl.edu.wat.share.cash.engine.repository.PersonGroupRepository;
 import pl.edu.wat.share.cash.engine.repository.PersonRepository;
 import pl.edu.wat.share.cash.engine.repository.TransactionRepository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -54,6 +55,10 @@ public class GroupProvider extends BaseCrudProvider<Group, GroupDto> {
 
     public List<GroupDto> getAllGroups() { return convert(groupRepository.findAll());}
 
+    public List<GroupDto> getGroupsByMemberId(Long personId) {
+        return convert(groupRepository.getGroupsByMemberId(personId));
+    }
+
     @Override
     protected Group convert(GroupDto dto, Group entity) {
         if (entity == null) {
@@ -62,7 +67,7 @@ public class GroupProvider extends BaseCrudProvider<Group, GroupDto> {
 
         entity.setName(dto.getName());
         entity.setPassword(dto.getPassword());
-        entity.setCreationDate(dto.getCreationDate());
+        entity.setCreationDate(new Date());
 
         if(dto.getOwnerId() != null) {
             entity.setOwner(repository.getOne(dto.getOwnerId()));
