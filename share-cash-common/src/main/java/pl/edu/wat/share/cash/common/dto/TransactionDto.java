@@ -20,4 +20,7 @@ public class TransactionDto extends BaseDto<Long> {
     private String adress;
     private Long accNumber;
     private Date transactionDate;
+    private Double latitude;
+    private Double longitude;
+    private String transactionAddress;
 }
