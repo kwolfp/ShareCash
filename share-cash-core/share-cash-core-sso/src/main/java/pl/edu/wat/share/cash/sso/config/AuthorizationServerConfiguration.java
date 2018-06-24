@@ -33,7 +33,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         clients.inMemory()
                 .withClient("ShareCashApp")
                 .secret("f7f5d77e76a67f787ef6da8c")
-                .authorizedGrantTypes("authorization_code")
+                .authorizedGrantTypes("authorization_code", "password")
                 .scopes("read", "write")
                 .autoApprove(true);
     }

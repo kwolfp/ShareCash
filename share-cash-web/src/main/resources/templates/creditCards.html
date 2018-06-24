@@ -1,9 +1,56 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{main.html}">
-<body>
+<form class="form-horizontal" role="form" ng-controller="CreditCardController" ng-submit="addCreditCard()">
+    <fieldset>
+        <legend>Dodaj nową kartę</legend>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="card_owner">Właściciel karty</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="owner_name" ng-model="owner_name" id="card_owner" placeholder="Imię i nazwisko właściciela">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="owner_address">Adres właściciela</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" name="owner_address" id="owner_address" ng-model="owner_address" placeholder="Adres podany podczas zakładania karty">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="country">Kraj</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="country" id="country" ng-model="country" placeholder="Kraj pochodzenia">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="provider_card">Rodzaj </label>
+            <div class="col-sm-2">
+                <select name="provider" class="form-control" id="provider_card" ng-model="provider">
+                    <option value="VISA">VISA</option>
+                    <option value="MASTER_CARD">Master Card</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="card-number">Numer karty</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" name="card_number" id="card-number" ng-model="card_number" placeholder="Numer karty kredytowej/debetowej">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Data wygaśnięcia</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" name="expiration_date" id="exp" ng-model="exp" placeholder="Miesiąc/Rok">
+            </div>
+        </div>
 
-
-</body>
-</html>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="cvv">Kod CVV</label>
+            <div class="col-sm-1">
+                <input type="text" class="form-control" name="csc" id="cvv" ng-model="csc" placeholder="CVV">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" class="btn btn-success">Dodaj nową kartę</button>
+            </div>
+        </div>
+    </fieldset>
+</form>

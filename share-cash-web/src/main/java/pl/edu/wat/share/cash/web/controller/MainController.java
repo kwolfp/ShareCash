@@ -5,8 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import pl.edu.wat.share.cash.common.dto.CreditCardDto;
+import pl.edu.wat.share.cash.common.dto.GroupDto;
 import pl.edu.wat.share.cash.common.dto.PersonDto;
+import pl.edu.wat.share.cash.common.dto.PersonGroupDto;
 import pl.edu.wat.share.cash.common.dto.TransactionDto;
+import pl.edu.wat.share.cash.common.rest.CreditCardRest;
+import pl.edu.wat.share.cash.common.rest.GroupRest;
 import pl.edu.wat.share.cash.common.rest.TransactionRest;
 
 import java.util.List;
@@ -22,6 +27,12 @@ public class MainController extends BaseController {
     @Autowired
     TransactionRest transactionRest;
 
+    @Autowired
+    CreditCardRest creditCardRest;
+
+    @Autowired
+    GroupRest groupRest;
+
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String getMainPage() {
@@ -29,7 +40,20 @@ public class MainController extends BaseController {
     }
 
     @RequestMapping(value = "index", method = RequestMethod.GET)
-    public String getIndexPage() {
+    public String getIndexPage(Model model) {
+        PersonDto person = getLoggedInPerson();
+        if(person == null) {
+            return "index";
+        }
+
+        List<GroupDto> groupsMember = person.getGroups();
+        if(groupsMember != null) {
+            model.addAttribute("groupsCount", groupsMember.size());
+        }
+
+        TransactionDto lastTransaction = transactionRest.getLastTransactionByPersonId(person.getId());
+
+        model.addAttribute("lastTransaction", lastTransaction);
         return "index";
     }
 
@@ -42,4 +66,27 @@ public class MainController extends BaseController {
         return "transactions";
     }
 
+    @RequestMapping(value = "creditCards/add", method = RequestMethod.GET)
+    public String getCreditCardsPage() {
+        return "creditCards";
+    }
+
+    @RequestMapping(value = "creditCards/list", method = RequestMethod.GET)
+    public String getCreditCardsList(Model models) {
+        PersonDto person = getLoggedInPerson();
+        List<CreditCardDto> creditCards = creditCardRest.getCreditCardsByOwnerId(person.getId());
+
+        models.addAttribute("creditCards", creditCards);
+        return "creditCards_list";
+
+    }
+
+    @RequestMapping(value = "groups", method = RequestMethod.GET)
+    public String getGroupsPage(Model model) {
+        PersonDto person = getLoggedInPerson();
+        List<GroupDto> groups = groupRest.getGroupsByMemberId(person.getId());
+
+        model.addAttribute("groups", groups);
+        return "groups";
+    }
 }

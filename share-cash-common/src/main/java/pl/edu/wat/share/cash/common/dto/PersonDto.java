@@ -20,6 +20,7 @@ public class PersonDto extends BaseDto<Long> {
 
     private String name;
     private String lastName;
+    private String email;
 
     private List<CreditCardDto> creditCards;
     private List<GroupDto> groups;
