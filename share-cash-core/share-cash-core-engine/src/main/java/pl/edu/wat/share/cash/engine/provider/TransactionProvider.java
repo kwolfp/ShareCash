@@ -62,6 +62,9 @@ public class TransactionProvider extends BaseCrudProvider<Transaction, Transacti
         entity.setAdress(dto.getAdress());
         entity.setAccNumber(dto.getAccNumber());
         entity.setTransactionDate(dto.getTransactionDate());
+        entity.setLatitude(dto.getLatitude());
+        entity.setLongitude(dto.getLongitude());
+        entity.setTransactionAddress(dto.getTransactionAddress());
         if(dto.getPayerId() != null) {
             entity.setPayer(groupRepository.getOne(dto.getPayerId()));
         }
