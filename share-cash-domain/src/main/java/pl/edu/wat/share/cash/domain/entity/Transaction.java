@@ -41,4 +41,13 @@ public class Transaction extends BaseEntity {
 
     @Column
     Date transactionDate;
+
+    @Column
+    Double latitude;
+
+    @Column
+    Double longitude;
+
+    @Column
+    String transactionAddress;
 }
