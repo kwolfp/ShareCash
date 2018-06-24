@@ -1,6 +1,7 @@
 package pl.edu.wat.share.cash.engine.provider;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 import pl.edu.wat.share.cash.common.dto.PersonDto;
 import pl.edu.wat.share.cash.common.dto.TransactionDto;
@@ -44,6 +45,11 @@ public class TransactionProvider extends BaseCrudProvider<Transaction, Transacti
 
     public List<TransactionDto> getTransactionByPersonId(Long personId) {
         return convert(transactionRepository.getTransactionsByPersonId(personId));
+    }
+
+    public TransactionDto getLastTransactionByPersonId(Long personId) {
+        List<TransactionDto> transactionDtoList = convert(transactionRepository.getLastTransactionByPersonId(personId));
+        return transactionDtoList.size() > 0 ? transactionDtoList.get(0) : null;
     }
 
     @Override

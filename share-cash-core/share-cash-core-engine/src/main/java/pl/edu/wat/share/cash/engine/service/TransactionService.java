@@ -11,4 +11,5 @@ public interface TransactionService {
     void deleteTransaction(Long transactionId);
     List<TransactionDto> getAllTransactions();
     List<TransactionDto> getTransactionByPersonId(Long personId);
+    TransactionDto getLastTransactionByPersonId(Long personId);
 }

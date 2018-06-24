@@ -1,0 +1,27 @@
+<div class="row" xmlns:th="http://www.thymeleaf.org">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-list"></i> Lista grup
+            </div>
+            <div class="list-group list-group-flush small">
+                <a class="list-group-item list-group-item-action" th:each="group, itr : ${groups}">
+                    <div class="media">
+                        <div class="media-body">
+                            Grupa
+                            <strong th:text="${group.name}"></strong>
+                            stworzona
+                            <strong th:text="${#dates.format(group.creationDate, 'dd-MM-yyyy HH:mm')}"></strong>
+
+                            <div class="date-cell">
+                                Liczba członków: <strong th:text="${#lists.size(group.members)}"></strong>
+                                Liczba transakcji: <strong th:text="${#lists.size(group.transactions)}"></strong>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

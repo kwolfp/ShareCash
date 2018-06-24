@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import pl.edu.wat.share.cash.common.rest.CreditCardRest;
+import pl.edu.wat.share.cash.common.rest.GroupRest;
 import pl.edu.wat.share.cash.common.rest.PersonRest;
 import pl.edu.wat.share.cash.common.rest.TransactionRest;
 import pl.edu.wat.share.cash.web.rest.invoker.OAuth2SpringRestInvokerProxyFactoryBean;
@@ -41,5 +42,10 @@ public class RestBeanFactory {
     @Bean(name = "CreditCardRest")
     public SpringRestInvokerProxyFactoryBean creditCardRest() {
         return getRestInvokerForInterface(CreditCardRest.class);
+    }
+
+    @Bean(name = "GroupRest")
+    public SpringRestInvokerProxyFactoryBean groupRest() {
+        return getRestInvokerForInterface(GroupRest.class);
     }
 }
