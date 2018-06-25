@@ -28,10 +28,10 @@ security:
     client:
       clientId: ShareCashApp
       clientSecret: f7f5d77e76a67f787ef6da8c
-      accessTokenUri: http://localhost:8043/auth/oauth/token
-      userAuthorizationUri: http://localhost:8043/auth/oauth/authorize
+      accessTokenUri: @sso.uri.access.token@
+      userAuthorizationUri: @sso.uri.user.authorization@
     resource:
-      userInfoUri: http://localhost:8043/auth/user/me
+      userInfoUri: @sso.uri.user.info@
 
 logging:
     level:
