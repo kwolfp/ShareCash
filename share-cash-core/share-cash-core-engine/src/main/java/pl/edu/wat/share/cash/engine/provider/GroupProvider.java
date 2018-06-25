@@ -3,12 +3,8 @@ package pl.edu.wat.share.cash.engine.provider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.edu.wat.share.cash.common.dto.GroupDto;
-import pl.edu.wat.share.cash.common.dto.PersonDto;
 import pl.edu.wat.share.cash.common.provider.BaseCrudProvider;
-import pl.edu.wat.share.cash.domain.entity.CreditCard;
 import pl.edu.wat.share.cash.domain.entity.Group;
-
-import pl.edu.wat.share.cash.domain.entity.Person;
 import pl.edu.wat.share.cash.domain.entity.Transaction;
 import pl.edu.wat.share.cash.engine.repository.GroupRepository;
 import pl.edu.wat.share.cash.engine.repository.PersonGroupRepository;
@@ -53,10 +49,12 @@ public class GroupProvider extends BaseCrudProvider<Group, GroupDto> {
         groupRepository.delete(groupId);
     }
 
-    public List<GroupDto> getAllGroups() { return convert(groupRepository.findAll());}
-
     public List<GroupDto> getGroupsByMemberId(Long personId) {
         return convert(groupRepository.getGroupsByMemberId(personId));
+    }
+
+    public boolean isGroupMember(Long groupId, Long personId) {
+        return personGroupRepository.existsByGroupIdAndPersonId(groupId, personId);
     }
 
     @Override

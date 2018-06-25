@@ -39,10 +39,6 @@ public class TransactionProvider extends BaseCrudProvider<Transaction, Transacti
         transactionRepository.delete(transactionId);
     }
 
-    public List<TransactionDto> getAllTransactions() {
-        return convert(transactionRepository.findAll());
-    }
-
     public List<TransactionDto> getTransactionByPersonId(Long personId) {
         return convert(transactionRepository.getTransactionsByPersonId(personId));
     }

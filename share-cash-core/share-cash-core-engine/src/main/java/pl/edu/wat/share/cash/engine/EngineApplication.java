@@ -16,6 +16,7 @@ import org.springframework.context.annotation.ComponentScan;
                 "pl.edu.wat.share.cash.engine.provider",
                 "pl.edu.wat.share.cash.engine.service",
                 "pl.edu.wat.share.cash.engine.repository",
+                "pl.edu.wat.share.cash.common.session",
                 "pl.edu.wat.share.cash.common.config"})
 @SpringBootApplication
 public class EngineApplication extends SpringBootServletInitializer {

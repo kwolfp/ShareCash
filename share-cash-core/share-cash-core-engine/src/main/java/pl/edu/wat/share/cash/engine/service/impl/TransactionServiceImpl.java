@@ -7,8 +7,10 @@ import pl.edu.wat.share.cash.engine.provider.TransactionProvider;
 import pl.edu.wat.share.cash.engine.service.TransactionService;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
-public class TransactionServiceImpl implements TransactionService{
+public class TransactionServiceImpl extends BaseService implements TransactionService {
 
     @Autowired
     TransactionProvider transactionProvider;
@@ -16,39 +18,57 @@ public class TransactionServiceImpl implements TransactionService{
 
     @Override
     public TransactionDto createTransaction(TransactionDto transaction) {
-        return transactionProvider.createTransaction(transaction);
+        if(transaction != null && isGroupMember(transaction.getPayerId())) {
+            return transactionProvider.createTransaction(transaction);
+        }
+        return null;
     }
 
     @Override
     public TransactionDto updateTransaction(Long transactionId, TransactionDto transaction) {
-        return transactionProvider.updateTransaction(transactionId, transaction);
+        if(transaction != null && isGroupMember(transaction.getPayerId())) {
+            return transactionProvider.updateTransaction(transactionId, transaction);
+        }
+        return null;
     }
 
     @Override
     public TransactionDto getTransaction(Long transactionId) {
-        return transactionProvider.getTransaction(transactionId);
+        if(isGroupMember(transactionId)) {
+            return transactionProvider.getTransaction(transactionId);
+        }
+        return null;
     }
 
     @Override
     public void deleteTransaction(Long transactionId) {
-        transactionProvider.deleteTransaction(transactionId);
+        if(isGroupMember(transactionId)) {
+            transactionProvider.deleteTransaction(transactionId);
+        }
     }
 
     @Override
-    public List<TransactionDto> getAllTransactions() { return transactionProvider.getAllTransactions(); }
-
-    @Override
     public List<TransactionDto> getTransactionByPersonId(Long personId) {
-        return transactionProvider.getTransactionByPersonId(personId);
+        List<TransactionDto> transactions = transactionProvider.getTransactionByPersonId(personId);
+        return transactions.stream()
+                .filter(e -> isTransactionOwner(e))
+                .collect(Collectors.toList());
     }
 
     @Override
     public TransactionDto getLastTransactionByPersonId(Long personId) {
-        return transactionProvider.getLastTransactionByPersonId(personId);
+        TransactionDto transaction = transactionProvider.getLastTransactionByPersonId(personId);
+        if(isTransactionOwner(transaction)) {
+            return transaction;
+        }
+        return null;
     }
 
     @Override
     public List<TransactionDto> getTransactionsLocationsByPersonId(Long personId) {
-        return transactionProvider.getTransactionsLocationsByPersonId(personId);
+        List<TransactionDto> transactions = transactionProvider.getTransactionsLocationsByPersonId(personId);
+        return transactions.stream()
+                .filter(e -> isTransactionOwner(e))
+                .collect(Collectors.toList());
     }
 }

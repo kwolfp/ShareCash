@@ -29,12 +29,6 @@ public interface GroupRest extends BaseRest {
     @RequestMapping(value = "/delete/{groupId}", method = RequestMethod.DELETE)
     void deleteGroup(@PathVariable("groupId") Long groupId);
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    List<GroupDto> getAllGroups();
-
-    @RequestMapping(value = "/{groupId}/members/add", method = RequestMethod.PUT)
-    GroupDto addMember(@PathVariable("groupId") Long groupId, @RequestParam("percent") Integer percent, @RequestBody PersonDto person);
-
     @RequestMapping(value = "/{groupId}/join", method = RequestMethod.PUT)
     GroupJoinStatusEnum joinGroup(@PathVariable("groupId") Long groupId, @RequestBody JoinGroupDto joinGroup);
 

@@ -1,6 +1,7 @@
 package pl.edu.wat.share.cash.engine.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Service;
 import pl.edu.wat.share.cash.common.dto.CreditCardDto;
 import pl.edu.wat.share.cash.engine.provider.CreditCardProvider;
@@ -14,6 +15,8 @@ public class CreditCardServiceImpl implements CreditCardService {
 
     @Autowired
     CreditCardProvider cardProvider;
+
+    private AuthenticationManager authenticationManager;
 
 
     @Override

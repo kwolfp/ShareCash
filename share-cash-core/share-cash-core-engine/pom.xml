@@ -80,7 +80,6 @@
             <id>deploy</id>
             <properties>
                 <sso.host>tim.przyborowski.ovh</sso.host>
-                <engine.host>tim.przyborowski.ovh</engine.host>
             </properties>
         </profile>
         <profile>

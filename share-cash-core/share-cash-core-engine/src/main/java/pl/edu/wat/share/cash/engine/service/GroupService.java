@@ -12,8 +12,6 @@ public interface GroupService {
     GroupDto updateGroup(Long groupId, GroupDto group);
     GroupDto getGroup(Long groupId);
     void deleteGroup(Long groupId);
-    List<GroupDto> getAllGroups();
-    GroupDto addMember(Long groupId, PersonDto person, Integer percent);
     GroupJoinStatusEnum joinGroup(Long groupId, JoinGroupDto joinGroup);
     List<GroupDto> getGroupsByMemberId(Long personId);
 }

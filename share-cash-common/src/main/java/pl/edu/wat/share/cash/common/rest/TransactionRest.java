@@ -28,9 +28,6 @@ public interface TransactionRest {
     @RequestMapping(value = "/delete/{transactionId}", method = RequestMethod.DELETE)
     void deleteTransaction(@PathVariable("transactionId") Long transactionId);
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    List<TransactionDto> getAllTransactions();
-
     @RequestMapping(value = "/persons/{personId}", method = RequestMethod.GET)
     List<TransactionDto> getTransactionByPersonId(@PathVariable("personId") Long personId);
 

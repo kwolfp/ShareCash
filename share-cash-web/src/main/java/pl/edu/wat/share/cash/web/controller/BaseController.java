@@ -5,7 +5,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import pl.edu.wat.share.cash.common.dto.PersonDto;
 import pl.edu.wat.share.cash.common.rest.PersonRest;
-import pl.edu.wat.share.cash.web.session.UserSessionContext;
+import pl.edu.wat.share.cash.common.session.UserSessionContext;
 
 /**
  * Created by Kamil Przyborowski

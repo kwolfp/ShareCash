@@ -42,15 +42,6 @@ public class GroupRestController implements GroupRest {
     }
 
     @Override
-    public List<GroupDto> getAllGroups() { return service.getAllGroups();
-    }
-
-    @Override
-    public GroupDto addMember(@PathVariable("groupId") Long groupId, @RequestParam("percent") Integer percent, @RequestBody PersonDto person) {
-        return service.addMember(groupId, person, percent);
-    }
-
-    @Override
     public GroupJoinStatusEnum joinGroup(@PathVariable("groupId") Long groupId, @RequestBody JoinGroupDto joinGroup) {
         return service.joinGroup(groupId, joinGroup);
     }

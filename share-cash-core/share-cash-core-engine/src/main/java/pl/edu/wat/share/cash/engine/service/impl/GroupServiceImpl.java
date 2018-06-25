@@ -13,9 +13,11 @@ import pl.edu.wat.share.cash.engine.provider.PersonProvider;
 import pl.edu.wat.share.cash.engine.service.GroupService;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
-public class GroupServiceImpl implements GroupService {
+public class GroupServiceImpl extends BaseService implements GroupService {
 
 
     @Autowired
@@ -37,24 +39,28 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public GroupDto updateGroup(Long groupId, GroupDto group) {
-        return groupProvider.updateGroup(groupId, group);
+        if(isGroupMember(groupId)) {
+            return groupProvider.updateGroup(groupId, group);
+        }
+        return null;
     }
 
     @Override
     public GroupDto getGroup(Long groupId) {
-        return groupProvider.getGroup(groupId);
+        if(isGroupMember(groupId)) {
+            return groupProvider.getGroup(groupId);
+        }
+        return null;
     }
 
     @Override
     public void deleteGroup(Long groupId) {
-        groupProvider.deleteGroup(groupId);
+        if(isGroupMember(groupId)) {
+            groupProvider.deleteGroup(groupId);
+        }
     }
 
-    @Override
-    public List<GroupDto> getAllGroups() { return groupProvider.getAllGroups(); }
-
-    @Override
-    public GroupDto addMember(Long groupId, PersonDto person, Integer percent) {
+    private GroupDto addMember(Long groupId, PersonDto person, Integer percent) {
         if(person == null) {
             return null;
         }

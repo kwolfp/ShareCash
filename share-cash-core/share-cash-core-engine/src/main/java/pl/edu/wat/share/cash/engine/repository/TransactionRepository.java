@@ -22,7 +22,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
                    ") order by tr.transaction_date desc ",nativeQuery = true)
     List<Transaction> getLastTransactionByPersonId(Long personId);
 
-    @Query(value = "select distinct on (tr.latitude, tr.longitude) * from t_transaction tr " +
+    @Query(value = "select distinct on (tr.transaction_address) tr.* from t_transaction tr " +
                    "where tr.group_id in ( " +
                    "  select distinct pg.group_id from t_person_group pg where pg.person_id = ?1 " +
                    ")",nativeQuery = true)

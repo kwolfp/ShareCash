@@ -1,4 +1,4 @@
-package pl.edu.wat.share.cash.web.session;
+package pl.edu.wat.share.cash.common.session;
 
 import lombok.Data;
 import org.springframework.context.annotation.Scope;
