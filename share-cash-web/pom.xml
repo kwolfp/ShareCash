@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <artifactId>share-cash-web</artifactId>
 
@@ -21,10 +21,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <engine.url>http://127.0.0.1:8090</engine.url>
-    </properties>
-
     <profiles>
         <profile>
             <id>web</id>
@@ -32,6 +28,11 @@
                 <dependency>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-web</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                    <scope>provided</scope>
                 </dependency>
                 <dependency>
                     <groupId>pl.edu.wat</groupId>
@@ -111,16 +112,6 @@
                     <resource>
                         <directory>src/main/resources</directory>
                         <filtering>true</filtering>
-                        <excludes>
-                            <exclude>static/fonts/**</exclude>
-                        </excludes>
-                    </resource>
-                    <resource>
-                        <directory>src/main/resources</directory>
-                        <filtering>false</filtering>
-                        <includes>
-                            <include>static/fonts/**</include>
-                        </includes>
                     </resource>
                 </resources>
                 <plugins>
@@ -130,6 +121,34 @@
                     </plugin>
                 </plugins>
             </build>
+            <properties>
+                <engine.protocol>http</engine.protocol>
+                <engine.host>127.0.0.1</engine.host>
+                <engine.port>8090</engine.port>
+                <engine.url>${engine.protocol}://${engine.host}:${engine.port}</engine.url>
+
+                <sso.protocol>http</sso.protocol>
+                <sso.host>localhost</sso.host>
+                <sso.port>8043</sso.port>
+                <sso.url>${sso.protocol}://${sso.host}:${sso.port}</sso.url>
+
+                <sso.uri.access.token>${sso.url}/auth/oauth/token</sso.uri.access.token>
+                <sso.uri.user.authorization>${sso.url}/auth/oauth/authorize</sso.uri.user.authorization>
+                <sso.uri.user.info>${sso.url}/auth/user/me</sso.uri.user.info>
+
+                <thymleaf.static.path>file:src/main/resources/static/</thymleaf.static.path>
+                <thymleaf.templates.path>file:src/main/resources/templates/</thymleaf.templates.path>
+            </properties>
+        </profile>
+        <profile>
+            <id>deploy</id>
+            <properties>
+                <sso.host>tim.przyborowski.ovh</sso.host>
+                <engine.host>tim.przyborowski.ovh</engine.host>
+
+                <thymleaf.static.path>classpath:/static/</thymleaf.static.path>
+                <thymleaf.templates.path>classpath:/templates/</thymleaf.templates.path>
+            </properties>
         </profile>
     </profiles>
 

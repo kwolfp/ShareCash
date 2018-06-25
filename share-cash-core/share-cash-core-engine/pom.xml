@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <artifactId>share-cash-core-engine</artifactId>
 
@@ -45,7 +45,43 @@
                     <groupId>org.springframework.security.oauth</groupId>
                     <artifactId>spring-security-oauth2</artifactId>
                 </dependency>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                    <scope>provided</scope>
+                </dependency>
             </dependencies>
+            <properties>
+                <sso.protocol>http</sso.protocol>
+                <sso.host>localhost</sso.host>
+                <sso.port>8043</sso.port>
+                <sso.url>${sso.protocol}://${sso.host}:${sso.port}</sso.url>
+
+                <sso.uri.access.token>${sso.url}/auth/oauth/token</sso.uri.access.token>
+                <sso.uri.user.authorization>${sso.url}/auth/oauth/authorize</sso.uri.user.authorization>
+                <sso.uri.user.info>${sso.url}/auth/user/me</sso.uri.user.info>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources</directory>
+                        <filtering>true</filtering>
+                    </resource>
+                </resources>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>deploy</id>
+            <properties>
+                <sso.host>tim.przyborowski.ovh</sso.host>
+                <engine.host>tim.przyborowski.ovh</engine.host>
+            </properties>
         </profile>
         <profile>
             <id>swagger</id>
