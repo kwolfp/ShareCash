@@ -50,4 +50,9 @@ public class TransactionRestController implements TransactionRest {
         return service.getLastTransactionByPersonId(personId);
     }
 
+    @Override
+    public List<TransactionDto> getTransactionsLocationsByPersonId(@PathVariable("personId") Long personId) {
+        return service.getTransactionsLocationsByPersonId(personId);
+    }
+
 }

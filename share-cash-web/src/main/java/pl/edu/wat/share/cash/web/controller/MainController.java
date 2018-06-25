@@ -13,8 +13,10 @@ import pl.edu.wat.share.cash.common.dto.TransactionDto;
 import pl.edu.wat.share.cash.common.rest.CreditCardRest;
 import pl.edu.wat.share.cash.common.rest.GroupRest;
 import pl.edu.wat.share.cash.common.rest.TransactionRest;
+import pl.edu.wat.share.cash.web.view.TransactionLocation;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Kamil Przyborowski
@@ -88,5 +90,17 @@ public class MainController extends BaseController {
 
         model.addAttribute("groups", groups);
         return "groups";
+    }
+
+    @RequestMapping(value = "locations", method = RequestMethod.GET)
+    public String getLocationsPage(Model model) {
+        PersonDto person = getLoggedInPerson();
+        List<TransactionDto> transactions = transactionRest.getTransactionsLocationsByPersonId(person.getId());
+        List<TransactionLocation> locations = transactions.stream()
+                .map(transactionDto -> new TransactionLocation(transactionDto.getLatitude(), transactionDto.getLongitude(), transactionDto.getTransactionAddress()))
+                .collect(Collectors.toList());
+
+        model.addAttribute("locations", locations);
+        return "locations";
     }
 }

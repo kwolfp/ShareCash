@@ -12,4 +12,5 @@ public interface TransactionService {
     List<TransactionDto> getAllTransactions();
     List<TransactionDto> getTransactionByPersonId(Long personId);
     TransactionDto getLastTransactionByPersonId(Long personId);
+    List<TransactionDto> getTransactionsLocationsByPersonId(Long personId);
 }

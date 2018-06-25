@@ -37,4 +37,7 @@ public interface TransactionRest {
     @RequestMapping(value = "/persons/{personId}/last", method = RequestMethod.GET)
     TransactionDto getLastTransactionByPersonId(@PathVariable("personId") Long personId);
 
+    @RequestMapping(value = "/persons/{personId}/locations", method = RequestMethod.GET)
+    List<TransactionDto> getTransactionsLocationsByPersonId(@PathVariable("personId") Long personId);
+
 }

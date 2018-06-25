@@ -52,6 +52,10 @@ public class TransactionProvider extends BaseCrudProvider<Transaction, Transacti
         return transactionDtoList.size() > 0 ? transactionDtoList.get(0) : null;
     }
 
+    public List<TransactionDto> getTransactionsLocationsByPersonId(Long personId) {
+        return convert(transactionRepository.getTransactionsLocationsByPersonId(personId));
+    }
+
     @Override
     protected Transaction convert(TransactionDto dto, Transaction entity) {
         if (entity == null) {

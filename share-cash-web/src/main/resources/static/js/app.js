@@ -31,6 +31,8 @@
                 });
             }
         })
+        .controller('LocationsController', function($scope) {
+        })
         .config(function($routeProvider, $locationProvider) {
             $routeProvider
                 .when('/', {
@@ -51,6 +53,9 @@
                 }).when('/groups', {
                     templateUrl: 'groups',
                     controller: 'GroupsController'
+                }).when('/locations', {
+                    templateUrl: 'locations',
+                    controller: 'LocationsController'
                 });
             $locationProvider.html5Mode({
                 enabled: true,
